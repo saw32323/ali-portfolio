@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ali Mrwan Khadour — cybersecurity, digital forensics, and software development.">
+  <title>Ali Mrwan Khadour | Cybersecurity & Developer</title>
+  <style>
+    :root {
+      --bg: #080d17; --panel: #101827; --panel-2: #0c1421; --text: #eef4ff;
+      --muted: #a1aec2; --line: rgba(148, 163, 184, .18); --cyan: #55e6d0;
+      --blue: #71a7ff; --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 78% 0%, rgba(40, 115, 150, .16), transparent 36%),
+        radial-gradient(ellipse at 5% 28%, rgba(48, 78, 160, .12), transparent 34%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(8,13,23,.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav { display:flex; align-items:center; justify-content:space-between; min-height:74px; gap:20px; }
+    .brand { font-weight:800; letter-spacing:-.04em; font-size:1.02rem; }
+    .brand span { color:var(--cyan); }
+    .nav-links { display:flex; gap:24px; color:var(--muted); font-size:.9rem; }
+    .nav-links a:hover, .text-link:hover { color:var(--cyan); }
+    .menu { display:none; border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:10px; padding:8px 11px; }
+    .hero { padding:100px 0 80px; display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:56px; min-height:610px; }
+    .eyebrow { color:var(--cyan); text-transform:uppercase; letter-spacing:.16em; font-weight:750; font-size:.76rem; display:flex; align-items:center; gap:10px; }
+    .eyebrow:before { content:""; width:24px; height:1px; background:var(--cyan); }
+    h1 { font-size:clamp(2.8rem, 6vw, 5.2rem); line-height:1.02; letter-spacing:-.065em; margin:20px 0; }
+    h1 .accent { color:var(--cyan); }
+    .lead { color:var(--muted); max-width:650px; font-size:1.08rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; border-radius:12px; padding:12px 18px; border:1px solid var(--line); font-weight:700; transition:.2s ease; }
+    .btn-primary { background:var(--cyan); color:#06111a; border-color:var(--cyan); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(85,230,208,.17); }
+    .btn-secondary:hover { border-color:var(--cyan); color:var(--cyan); }
+    .terminal { border:1px solid rgba(85,230,208,.28); background:linear-gradient(145deg, rgba(16,24,39,.97), rgba(10,17,29,.95)); border-radius:20px; box-shadow:0 28px 90px rgba(0,0,0,.25); overflow:hidden; transform:rotate(1deg); }
+    .terminal-top { display:flex; align-items:center; gap:7px; padding:15px 17px; border-bottom:1px solid var(--line); color:var(--muted); font-size:.8rem; }
+    .dot { width:9px; height:9px; border-radius:50%; background:#f87171; } .dot:nth-child(2){background:#fbbf24}.dot:nth-child(3){background:#4ade80}
+    .terminal-body { padding:24px; font: .88rem/1.9 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .prompt { color:var(--cyan); } .comment { color:#8190a6; } .value { color:#9bbcff; }
+    .status { display:flex; align-items:center; gap:9px; margin-top:20px; padding-top:17px; border-top:1px solid var(--line); color:var(--muted); font: .75rem/1.5 ui-monospace, monospace; }
+    .pulse { width:7px; height:7px; background:var(--cyan); border-radius:50%; box-shadow:0 0 12px var(--cyan); }
+    section { padding:76px 0; }
+    .section-head { max-width:680px; margin-bottom:32px; }
+    .kicker { color:var(--cyan); text-transform:uppercase; letter-spacing:.14em; font-size:.75rem; font-weight:800; }
+    h2 { font-size:clamp(2rem,4vw,3rem); line-height:1.12; letter-spacing:-.05em; margin:10px 0 14px; }
+    .section-head p, .muted { color:var(--muted); }
+    .about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:22px; }
+    .panel { background:rgba(16,24,39,.76); border:1px solid var(--line); border-radius:18px; padding:26px; }
+    .panel p { color:var(--muted); margin-bottom:0; }
+    .quickfacts { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .fact { padding:18px; border:1px solid var(--line); background:rgba(12,20,33,.7); border-radius:14px; }
+    .fact strong { display:block; font-size:1rem; } .fact span { color:var(--muted); font-size:.83rem; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .skill-card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px; }
+    .skill-icon { color:var(--cyan); font-size:1.45rem; margin-bottom:12px; }
+    .skill-card h3 { margin:0 0 7px; font-size:1.05rem; } .skill-card p { margin:0; color:var(--muted); font-size:.9rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:9px; margin-top:22px; }
+    .tag { border:1px solid var(--line); background:rgba(16,24,39,.72); color:#cbd7e9; padding:7px 11px; border-radius:9px; font-size:.82rem; }
+    .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .project { display:flex; flex-direction:column; min-height:250px; background:linear-gradient(155deg,rgba(16,24,39,.96),rgba(10,17,29,.9)); border:1px solid var(--line); border-radius:17px; padding:23px; }
+    .project-top { display:flex; align-items:center; justify-content:space-between; color:var(--cyan); font-size:1.3rem; }
+    .project h3 { margin:19px 0 8px; font-size:1.12rem; }
+    .project p { color:var(--muted); font-size:.9rem; margin:0 0 20px; }
+    .project small { color:#f6c879; margin-top:auto; font-size:.76rem; }
+    .learning { display:grid; grid-template-columns:.75fr 1.25fr; gap:24px; align-items:start; }
+    .learning-list { display:grid; gap:12px; }
+    .learning-item { display:flex; gap:15px; padding:17px; border:1px solid var(--line); border-radius:14px; background:rgba(16,24,39,.65); }
+    .num { color:var(--cyan); font: .85rem ui-monospace, monospace; padding-top:3px; }
+    .learning-item strong { display:block; } .learning-item span { color:var(--muted); font-size:.88rem; }
+    .contact-box { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; padding:35px; border:1px solid rgba(85,230,208,.25); background:linear-gradient(120deg,rgba(17,39,51,.8),rgba(16,24,39,.9)); border-radius:22px; }
+    .contact-box p { color:var(--muted); }
+    .contact-links { display:grid; gap:10px; }
+    .contact-link { display:flex; justify-content:space-between; align-items:center; padding:13px 15px; border:1px solid var(--line); border-radius:11px; background:rgba(8,13,23,.45); }
+    .contact-link span { color:var(--muted); font-size:.83rem; }
+    footer { border-top:1px solid var(--line); padding:25px 0; color:var(--muted); font-size:.82rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    .editable-note { color:#f6c879 !important; font-size:.78rem !important; }
+    @media (max-width:850px) {
+      .hero { grid-template-columns:1fr; padding:75px 0 55px; gap:35px; min-height:auto; }
+      .terminal { max-width:620px; transform:none; }
+      .about-grid,.learning { grid-template-columns:1fr; }
+      .skills-grid,.projects { grid-template-columns:repeat(2,1fr); }
+      .contact-box { grid-template-columns:1fr; }
+    }
+    @media (max-width:560px) {
+      .wrap { width:min(100% - 28px,var(--max)); }
+      .nav { min-height:64px; } .menu { display:block; }
+      .nav-links { display:none; position:absolute; top:64px; left:0; right:0; padding:18px 22px; background:#0b1220; border-bottom:1px solid var(--line); flex-direction:column; gap:14px; }
+      .nav-links.open { display:flex; }
+      .hero { padding-top:58px; } h1 { font-size:2.8rem; }
+      section { padding:55px 0; }
+      .skills-grid,.projects { grid-template-columns:1fr; }
+      .quickfacts { grid-template-columns:1fr 1fr; }
+      .panel,.contact-box { padding:21px; }
+      .terminal-body { padding:18px; font-size:.78rem; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">ALI<span>.</span>MK</a>
+    <button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu ☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow">Cybersecurity · Programming</div>
+      <h1>Ali Mrwan<br><span class="accent">Khadour.</span></h1>
+      <p class="lead">An intermediate-level learner and builder exploring cybersecurity, digital forensics, and software development. I enjoy understanding how systems work, investigating digital evidence, and writing code that solves practical problems.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="terminal" aria-label="Decorative terminal illustration">
+      <div class="terminal-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:8px">ali@portfolio: ~</span></div>
+      <div class="terminal-body">
+        <div><span class="prompt">ali@portfolio</span>:<span class="value">~</span>$ whoami</div>
+        <div>Ali Mrwan Khadour</div><br>
+        <div><span class="prompt">ali@portfolio</span>:<span class="value">~</span>$ cat focus.txt</div>
+        <div>Cybersecurity</div><div>Digital Forensics</div><div>Software Development</div><br>
+        <div><span class="prompt">ali@portfolio</span>:<span class="value">~</span>$ ls skills/</div>
+        <div>python/ &nbsp; c++/ &nbsp; kali-linux/</div>
+        <div class="status"><i class="pulse"></i> STATUS: LEARNING · BUILDING · IMPROVING</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">01 / About</div><h2>Curious by nature.<br>Technical by practice.</h2><p>A short introduction to the person behind the keyboard.</p></div>
+      <div class="about-grid">
+        <div class="panel">
+          <h3>Who I am</h3>
+          <p>I’m Ali Mrwan Khadour, an Informatics Engineering student at Lattakia University with an interest in both cybersecurity and programming. I’m developing my skills in Python, C++, Kali Linux, and digital forensics, and use this portfolio to share my learning and projects as they grow.</p>
+          <p class="editable-note">[Personalize this section: add your education, location if desired, career goals, and a few lines about what motivates you.]</p>
+        </div>
+        <div class="quickfacts">
+          <div class="fact"><strong>Cybersecurity</strong><span>Area of focus</span></div>
+          <div class="fact"><strong>Programming</strong><span>Python · C++</span></div>
+          <div class="fact"><strong>Digital Forensics</strong><span>Learning & practice</span></div>
+          <div class="fact"><strong>Experience</strong><span>Intermediate level</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">02 / Skills</div><h2>Tools I’m building with.</h2><p>A snapshot of my current technical interests and skills. Add proficiency levels only when you can confidently support them.</p></div>
+      <div class="skills-grid">
+        <article class="skill-card"><div class="skill-icon">⌘</div><h3>Python</h3><p>Scripting, problem-solving, and exploring automation for practical tasks.</p></article>
+        <article class="skill-card"><div class="skill-icon">$_</div><h3>Kali Linux</h3><p>Linux command-line workflows and a security-focused learning environment.</p></article>
+        <article class="skill-card"><div class="skill-icon">⌕</div><h3>Digital Forensics</h3><p>Interest in digital evidence, investigation workflows, and forensic tools.</p></article>
+        <article class="skill-card"><div class="skill-icon">{ }</div><h3>C++</h3><p>Programming fundamentals and structured problem-solving.</p></article>
+        <article class="skill-card"><div class="skill-icon">◈</div><h3>Security Research</h3><p>Learning to assess systems ethically and document findings clearly.</p></article>
+        <article class="skill-card"><div class="skill-icon">▣</div><h3>Technical Documentation</h3><p>Recording steps, observations, and lessons learned from practice.</p></article>
+      </div>
+      <div class="tags" aria-label="Technology tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Kali Linux</span><span class="tag">Digital Forensics</span><span class="tag">Linux CLI</span><span class="tag">Security Fundamentals</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">03 / Projects</div><h2>Proof through practice.</h2><p>These are project slots, not claims of completed work. Replace each one with a real project when you have it ready.</p></div>
+      <div class="projects">
+        <article class="project"><div class="project-top"><span>⌘</span><span>01</span></div><h3>[Python Project Name]</h3><p>[Describe a script or tool you actually built, the problem it solves, and what you learned.]</p><small>STATUS: PLACEHOLDER — ADD YOUR PROJECT</small><div class="tags"><span class="tag">Python</span><span class="tag">Automation</span></div></article>
+        <article class="project"><div class="project-top"><span>⌕</span><span>02</span></div><h3>[Forensics Lab Name]</h3><p>[Summarize an authorized lab or practice case. Explain the evidence type, method, and key learning.]</p><small>STATUS: PLACEHOLDER — ADD YOUR PROJECT</small><div class="tags"><span class="tag">Forensics</span><span class="tag">Investigation</span></div></article>
+        <article class="project"><div class="project-top"><span>{ }</span><span>03</span></div><h3>[C++ Project Name]</h3><p>[Describe a C++ application or programming exercise you completed and the main concepts used.]</p><small>STATUS: PLACEHOLDER — ADD YOUR PROJECT</small><div class="tags"><span class="tag">C++</span><span class="tag">Development</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="wrap learning">
+      <div class="section-head"><div class="kicker">04 / Journey</div><h2>Always learning.<br>Always improving.</h2><p>Use this section to show your real progress over time.</p><p class="editable-note">[Add dates and links when you have verified courses, certificates, labs, or milestones.]</p></div>
+      <div class="learning-list">
+        <div class="learning-item"><div class="num">01</div><div><strong>Programming practice</strong><span>Python and C++ — add specific concepts or projects you have completed.</span></div></div>
+        <div class="learning-item"><div class="num">02</div><div><strong>Linux & security labs</strong><span>Kali Linux — add the platforms, labs, or exercises you have actually completed.</span></div></div>
+        <div class="learning-item"><div class="num">03</div><div><strong>Digital forensics</strong><span>Add verified tools, case studies, training, and forensic techniques as you gain experience.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div><div class="kicker">05 / Contact</div><h2>Let’s connect.</h2><p>Interested in cybersecurity, programming, collaboration, or learning opportunities? Reach out using one of the links you add below.</p><p class="editable-note">Replace the placeholder links before publishing.</p></div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:alikhadout@gmail.com"><div><strong>Email</strong><br><span>alikhadout@gmail.com</span></div><b>↗</b></a>
+          <a class="contact-link" href="https://github.com/saw32323" target="_blank" rel="noopener noreferrer"><div><strong>GitHub</strong><br><span>github.com/saw32323</span></div><b>↗</b></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/ali-khadour-148827321/" target="_blank" rel="noopener noreferrer"><div><strong>LinkedIn</strong><br><span>linkedin.com/in/ali-khadour-148827321</span></div><b>↗</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Ali Mrwan Khadour</span><span>Built with curiosity and code.</span></div></footer>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
